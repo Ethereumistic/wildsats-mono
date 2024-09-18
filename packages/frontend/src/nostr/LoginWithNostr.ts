@@ -2,7 +2,7 @@ import * as nostr from 'nostr-tools';
 import NDK, { NDKEvent, NDKSubscription, NDKUser } from '@nostr-dev-kit/ndk';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 let ndk: NDK;
 
