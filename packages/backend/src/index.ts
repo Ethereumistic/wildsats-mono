@@ -13,6 +13,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working' });
+});
+
 const uri = process.env.MONGODB_URI || "mongodb://192.168.1.153:27017";
 const client = new MongoClient(uri);
 
@@ -30,10 +34,6 @@ connectToDatabase();
 
 const database = client.db("wildsats");
 const users = database.collection("users");
-
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'API is working' });
-});
 
 app.post('/api/users', async (req, res) => {
     try {
@@ -151,3 +151,5 @@ process.on('SIGINT', async () => {
   console.log('MongoDB connection closed');
   process.exit(0);
 });
+
+module.exports = app;
