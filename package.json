@@ -2,6 +2,7 @@
   "name": "wildsats-mono",
   "version": "1.0.0",
   "description": "testing monorepo with sveltekit and phaser",
+  "packageManager": "npm@8.19.2",
   "workspaces": [
     "packages/*"
   ],
