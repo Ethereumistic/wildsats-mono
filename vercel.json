@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "turbo run build",
-  "outputDirectory": "packages/frontend/build",
+  "outputDirectory": "packages/frontend/.svelte-kit/generated/client",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" }
   ],

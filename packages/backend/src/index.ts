@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: '*', // or whatever URL your frontend is running on
+    origin: 'https://wildsats-mono-frontend.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
