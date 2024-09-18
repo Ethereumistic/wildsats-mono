@@ -31,8 +31,13 @@ connectToDatabase();
 const database = client.db("wildsats");
 const users = database.collection("users");
 
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working' });
+});
+
 app.post('/api/users', async (req, res) => {
     try {
+      console.log('Received request:', req.body);
       const { nostrName, npub } = req.body;
       const result = await users.updateOne(
         { npub },
@@ -50,9 +55,9 @@ app.post('/api/users', async (req, res) => {
         },
         { upsert: true }
       );
-      res.status(200).json({ message: "User data updated", result });
+      res.status(200).json({ message: "User data saved successfully" });
     } catch (error) {
-      console.error("Error updating user data:", error);
+      console.error('Error in /api/users:', error);
       res.status(500).json({ error: (error as Error).message });
     }
   });
