@@ -1,6 +1,8 @@
 import { Scene, GameObjects } from 'phaser';
 import axios from 'axios';
 
+const API_URL = process.env.VITE_API_URL || 'http://localhost:3000';
+
 interface Animal {
     name: string;
     price: number;
@@ -205,7 +207,7 @@ export class Animals extends Scene {
 
 async fetchOwnedAnimals() {
     try {
-        const response = await axios.get(`http://localhost:3000/api/users/${this.npub}/characters`);
+        const response = await axios.get(`${API_URL}/users/${this.npub}/characters`);
         this.ownedAnimals = response.data.characters;
         console.log('Owned animals:', this.ownedAnimals);
     } catch (error) {
@@ -226,7 +228,7 @@ async buyAnimal(animal: Animal) {
         return;
     }
 
-    const url = `http://localhost:3000/api/users/${this.npub}/buy-animal`;
+    const url = `${API_URL}/users/${this.npub}/buy-animal`;
     const data = { animal: animal.name };
 
     console.log(`Attempting to buy ${animal.name} for user ${this.npub}`);

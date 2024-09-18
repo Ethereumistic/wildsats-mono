@@ -1,3 +1,15 @@
 {
-    "$schema": "https://turbo.build/schema.json"
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["$VITE_API_URL"],
+  "globalEnv": ["VITE_API_URL"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
   }
+}

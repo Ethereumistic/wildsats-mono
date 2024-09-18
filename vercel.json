@@ -1,18 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "packages/frontend/package.json",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "build" }
-      },
-      {
-        "src": "packages/backend/dist/index.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      { "src": "/api/(.*)", "dest": "packages/backend/dist/index.js" },
-      { "src": "/(.*)", "dest": "packages/frontend/build/$1" }
-    ]
+  "version": 2,
+  "buildCommand": "turbo run build",
+  "outputDirectory": "packages/frontend/build",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "@vercel/node@2.0.0"
+    }
   }
+}

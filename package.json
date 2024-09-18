@@ -2,15 +2,22 @@
   "name": "wildsats-mono",
   "version": "1.0.0",
   "description": "testing monorepo with sveltekit and phaser",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "node packages/backend/dist/index.js"
+    "start": "node packages/backend/dist/index.js",
+    "dev:frontend": "npm run dev -w packages/frontend",
+    "dev:backend": "npm run dev -w packages/backend",
+    "dev:all": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^9.0.1",
     "eslint": "^9.10.0",
     "prettier": "^3.3.3",
     "turbo": "^2.1.2"

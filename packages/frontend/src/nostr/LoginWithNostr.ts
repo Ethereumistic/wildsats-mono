@@ -2,6 +2,8 @@ import * as nostr from 'nostr-tools';
 import NDK, { NDKEvent, NDKSubscription, NDKUser } from '@nostr-dev-kit/ndk';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 let ndk: NDK;
 
 export async function initializeNDK() {
@@ -57,7 +59,7 @@ export function subscribeToUserEvents(pubkey: string, callback: (event: NDKEvent
 
   export async function saveUserData(nostrName: string, npub: string) {
     try {
-      const response = await axios.post('http://localhost:3000/api/users', { nostrName, npub });
+      const response = await axios.post(`${API_URL}/api/users`, { nostrName, npub });
       console.log('User data saved:', response.data);
       return response.data;
     } catch (error) {
