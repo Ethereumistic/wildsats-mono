@@ -59,7 +59,7 @@ export function subscribeToUserEvents(pubkey: string, callback: (event: NDKEvent
 
   export async function saveUserData(nostrName: string, npub: string) {
     try {
-      const response = await axios.post(`${API_URL}/api/users`, { nostrName, npub });
+      const response = await axios.post(`${API_URL}/users`, { nostrName, npub });
       console.log('User data saved:', response.data);
       return response.data;
     } catch (error) {
